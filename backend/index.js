@@ -1,6 +1,7 @@
 //Dependencies 
 const express = require('express');
 const bodyParser = require('body-parser');
+const formidable = require('express-formidable');
 const userRoutes = require('./routes/userRoutes');
 require('dotenv').config();
 //Intializations
@@ -12,20 +13,15 @@ const PORT = process.env.PORT_SERVER ;
 
 //Middlewares
 app.use(bodyParser.json());
+app.use(formidable());
 app.use('/users',userRoutes);
 
 //Routes
 app.get('/',(req,res)=>{res.json({message:"Working"})})
 
-app.post('/', (req, res)=> {
-    username = req.body.username;
-    res.json({message: username+ " Registered"});
-})
 
-app.post('/users/create', (req, res) => {
-    username = req.body.username;
-    res.json({message: username+" Registered"});
-})
+
+
 
 app.listen(PORT,(req,res)=>{
     console.log(`Server running on ${PORT}`);
