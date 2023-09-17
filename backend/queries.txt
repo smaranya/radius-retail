@@ -1,7 +1,7 @@
 CREATE TABLE Users(
     UID VARCHAR(8) PRIMARY KEY, 
     Name VARCHAR(20) NOT NULL, 
-    Phone VARCHAR(15) NOT NULL, 
+    Phone VARCHAR(15) NOT NULL UNIQUE, 
     Password VARCHAR(20) NOT NULL, 
     Location POINT, 
     isChatting BOOLEAN NOT NULL

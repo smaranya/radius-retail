@@ -2,15 +2,15 @@ const userModel = require('../models/userModel');
 
 class UserController {
     async createUser(req, res) {
-        const { name, phone, password } = req.fields;
+        const { name, phone, password } = req.fields || req.body;
         
-        try {
             const result = await userModel.createUser(name,phone,password);
-            res.status(201).json({ result });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'An error occurred while creating the user.' });
-        }
+            if(result === 400){
+                res.status(400).json({message: "Phone number already exsists"});
+            }
+            else {
+                res.status(201).json({message:"User created sucessfully"});
+            }
     }
 }
 

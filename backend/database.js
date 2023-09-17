@@ -5,7 +5,6 @@ dotenv.config();
 
 // Create a new instance of the Pool with your database configuration.
 const pool = new Pool({
-    
     user: process.env.DB_USER,
     database: process.env.DB_NAME,
     password: String(process.env.DB_PASSWORD),
