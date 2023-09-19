@@ -14,7 +14,7 @@ const PORT = process.env.PORT_SERVER ;
 //Middlewares
 app.use(bodyParser.json());
 app.use(formidable());
-app.use('/users',userRoutes);
+app.use('/users/',userRoutes);
 
 //Routes
 app.get('/',(req,res)=>{res.json({message:"Working"})})
