@@ -20,6 +20,20 @@ class UserModel {
             return result;
         }
     }
+
+    async loginUser(phone, password){
+            const query = 'SELECT  UID, Name FROM Users WHERE Phone = $1 AND Password = $2;';
+            const values = [phone, password];
+
+            result = await db.query(query, values);
+            
+            if (result.rowCount === 0) {
+                return result = 'Login failed. User not found.';
+            }
+
+            return result;
+    }
+    
 }
 
 module.exports = new UserModel();
